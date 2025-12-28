@@ -9,10 +9,15 @@ body {
   margin: 20px auto;
   width: 95%;
   display: grid;
-  gap: 10px;
+  gap: 20px;
 }
 
 /* Navbar */
+
+.navbar {
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px white;
+}
 .custom-navbar {
   background-color: #020617;
   border-bottom: 1px solid #1f2937;
@@ -51,11 +56,6 @@ body {
 .content {
   display: grid;
   gap: 20px;
-}
-
-.main-content {
-  border: 1px solid white;
-  padding: 10px;
 }
 
 /* End of Content */
