@@ -1,0 +1,15 @@
+.banner {
+  border: 1px solid white;
+  text-align: center;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: #020617;
+  font-size: larger;
+}
+
+.main-content {
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #020617;
+}

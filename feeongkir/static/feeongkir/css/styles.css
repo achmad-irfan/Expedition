@@ -1,0 +1,320 @@
+/* === RESET RINGAN === */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1.5fr;
+  gap: 20px;
+}
+
+/* === CONTAINER UTAMA === */
+.form-ongkir {
+  padding: 24px;
+  background: #020617;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* === JUDUL === */
+.form-ongkir h3,
+.data-ongkir h3 {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* === GRID UTAMA === */
+.ongkir {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* === BLOK ASAL & TUJUAN === */
+.asal-pengiriman,
+.tujuan-pengiriman {
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #111827;
+}
+
+.asal-pengiriman h5,
+.tujuan-pengiriman h5 {
+  margin-bottom: 12px;
+}
+
+/* === FORM FIELD === */
+.form-prov,
+.form-city,
+.form-weight,
+.form-volume {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: white;
+}
+
+/* === INPUT & SELECT === */
+select,
+input[type="text"] {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* === WEIGHT & VOLUME FULL WIDTH === */
+.form-weight,
+.form-volume {
+  grid-column: span 2;
+}
+
+/* === VOLUME INPUTS === */
+.volume-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  max-width: 50%;
+}
+
+/* === Courier === */
+.form-courier {
+  margin-top: 16px;
+}
+
+.courier-options {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.courier-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #111827;
+  color: white;
+  font-weight: 500;
+}
+
+.courier-item input {
+  accent-color: #2563eb;
+}
+
+/* === BUTTON === */
+#submit {
+  grid-column: span 2;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#submit:hover {
+  background: #1d4ed8;
+}
+
+/* === HASIL ONGKIR === */
+.data-ongkir {
+  padding: 24px;
+  border-radius: 12px;
+  background: #020617;
+}
+
+/* Table*/
+.arrow-led {
+  display: grid;
+  align-items: center;
+  font-weight: bold;
+  grid-template-columns: 3fr 4fr 3fr;
+}
+
+.arrow-led span {
+  border: 1px solid white;
+  padding: 10px;
+  display: block;
+  height: 90px;
+  text-align: center;
+  background-color: #260f8e;
+  border-radius: 15px;
+}
+
+.led-line {
+  width: 100%;
+  height: 8px;
+  background: repeating-linear-gradient(45deg, transparent 0px, transparent 6px, #090de6 6px, #5401f8 10px), repeating-linear-gradient(-45deg, transparent 0px, transparent 6px, #521de6 6px, #260f8e 10px);
+  animation: ledMove 1s linear infinite;
+  border-radius: 4px;
+}
+
+.weight-marquee {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  animation: moveTogether 6s linear infinite;
+}
+
+.weight-marquee img {
+  width: 200px;
+  height: 50px;
+  display: block;
+}
+
+.weight-marquee p {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 170px;
+  text-align: center;
+  padding: 5px;
+  font-size: smaller;
+}
+
+/* Table */
+/* === TABEL ONGKIR === */
+.ongkir-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-size: 14px;
+}
+
+/* Header */
+.ongkir-table thead {
+  background: #1f2937; /* dark slate */
+  color: #ffffff;
+}
+
+.ongkir-table th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* Body */
+.ongkir-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
+}
+
+/* Zebra stripe */
+.ongkir-table tbody tr:nth-child(even) {
+  background: #f9fafb;
+  color: black;
+}
+
+/* Hover */
+.ongkir-table tbody tr:hover {
+  background: #eef2ff;
+}
+
+.ongkir-table td:nth-child(1),
+.ongkir-table td:nth-child(2) {
+  color: black;
+}
+
+/* Harga */
+.ongkir-table td:last-child {
+  font-weight: 600;
+  color: #16a34a; /* green */
+  white-space: nowrap;
+}
+
+/* Estimasi */
+.ongkir-table td:nth-child(3) {
+  color: #2563eb; /* blue */
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .ongkir-table thead {
+    display: none;
+  }
+
+  .ongkir-table,
+  .ongkir-table tbody,
+  .ongkir-table tr,
+  .ongkir-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .ongkir-table tr {
+    margin-bottom: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+  }
+
+  .ongkir-table td {
+    border: none;
+    padding: 6px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .ongkir-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #374151;
+  }
+}
+
+@keyframes ledMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 120px 0;
+  }
+}
+
+@keyframes textMove {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(400%);
+  }
+}
+
+@keyframes moveTogether {
+  from {
+    transform: translateX(-40%);
+  }
+  to {
+    transform: translateX(40%);
+  }
+}

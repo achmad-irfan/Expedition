@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% load static %}
+<!-- Block CSS -->
+{% block app_css %}
+<link rel="stylesheet" href="{% static 'analytics/css/styles.css' %}" />
+{% endblock %}
+
+<!-- Block Banner -->
+{% block banner %}
+<p>{{deskripsi}}</p>
+{% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+<h5>Perbandingan Performa Beberapa Kurir Ekspedisi</h5>
+{% endblock %}

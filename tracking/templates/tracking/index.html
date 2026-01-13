@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% load static %}
+<!-- Block CSS -->
+{% block app_css %}
+<link rel="stylesheet" href="{% static 'tracking/css/styles.css' %}" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+{% endblock %}
+<!-- Block Content -->
+{% block content %}
+<div class="tracking">
+  <div class="form-resi">
+    <form method="GET">
+      <label for="resi">Masukan Nomer Resi </label>
+      <input id="resi" type="text" name="resi" placeholder="-- Nomer Resi --" />
+      <div class="courir-select">
+        <div class="courier-item">
+          <input type="radio" id="jne" name="courier" value="jne" />
+          <label for="jne">JNE</label>
+        </div>
+        <div class="courier-item">
+          <input type="radio" id="tiki" name="courier" value="tiki" />
+          <label for="tiki">TIKI</label>
+        </div>
+        <div class="courier-item">
+          <input type="radio" id="pos" name="courier" value="pos" />
+          <label for="pos">POS</label>
+        </div>
+        <div class="courier-item">
+          <input type="radio" id="jnt" name="courier" value="jnt" />
+          <label for="jnt">J&T</label>
+        </div>
+      </div>
+      <div id="telp-wrapper" style="display: none; margin-top: 8px">
+        <input type="text" id="telp" name="phone" maxlength="5" placeholder="5 digit terakhir nomor HP (khusus JNE)" />
+      </div>
+      <input id="submit" type="submit" value="Submit" />
+    </form>
+  </div>
+  <script src="{% static 'tracking/js/telp.js' %}"></script>
+
+  {% if data %}
+  <div class="status-resi">
+    <h5>Detail:</h5>
+    <table class="tracking-table">
+      <tr>
+        <th>Pengirim</th>
+        <th>{{data.data.detail.shipper}}</th>
+        <th>{{data.data.detail.origin}}</th>
+      </tr>
+      <tr>
+        <th>Penerima</th>
+        <th>{{data.data.detail.receiver}}</th>
+        <th>{{data.data.detail.destination}}</th>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <th colspan="2">{{data.data.summary.status}}</th>
+      </tr>
+    </table>
+    <h5 class="timeline-title">History Pengiriman</h5>
+
+    <div class="timeline">
+      {% for history in data.data.history %}
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">{{ history.date }}</span>
+          <p class="timeline-status">{{ history.status }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="peta">
+    <h5>Map</h5>
+    <div id="shipment-map"></div>
+  </div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="{% static 'tracking/js/peta.js' %}"></script>
+
+{% endif %} {% endblock %}

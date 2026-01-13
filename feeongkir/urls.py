@@ -18,9 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
-app_name= 'app_cekOngkir'
+app_name= 'app_ongkir'
 
 urlpatterns = [
-    path('', views.Ongkir.as_view() ),
+    path('', views.Ongkir.as_view(), name='ongkir' ),
     path("ajax/cities/", views.ajax_get_cities, name="ajax_get_cities"),
 ]

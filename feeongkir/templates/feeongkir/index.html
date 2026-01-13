@@ -1,0 +1,145 @@
+{% extends 'base.html' %} {% load static %}
+<!-- Block CSS -->
+{% block app_css %}
+<link rel="stylesheet" href="{% static 'feeongkir/css/styles.css' %}" />
+{% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+<div class="form-ongkir">
+  <h3>🔍 Data Pengiriman</h3>
+  <form method="get">
+    <div class="ongkir">
+      <div class="asal-pengiriman">
+        <!-- Asal Pengiriman -->
+        <h5>Asal Pengiriman</h5>
+        <!-- select asal provinsi -->
+        <div class="form-prov asal-prov">
+          <label for="tujuan-prov">Provinsi: </label>
+          <select id="asal-prov" name="asal-prov" data-target="asal-city" data-city-url="{% url 'app_ongkir:ajax_get_cities' %}">
+            <option value="">-- Pilih Provinsi --</option>
+            {% for prov in provinces %}
+            <option value="{{ prov.id }}">{{ prov.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <!-- select asal provinsi -->
+        <div class="form-city asal-city">
+          <label for="asal-city">Kota/Kabupaten: </label>
+          <select id="asal-city" name="asal-city">
+            <option value="">-- Pilih Kota --</option>
+          </select>
+        </div>
+      </div>
+      <!-- Tujuan Pengiriman -->
+      <div class="tujuan-pengiriman">
+        <h5>Tujuan Pengiriman</h5>
+        <!-- select tujuan provinsi -->
+        <div class="form-prov tujuan-prov">
+          <label for="tujuan-prov">Provinsi: </label>
+          <select id="tujuan-prov" name="tujuan-prov" data-target="tujuan-city" data-city-url="{% url 'app_ongkir:ajax_get_cities' %}">
+            <option value="">-- Pilih Provinsi --</option>
+            {% for prov in provinces %}
+            <option value="{{ prov.id }}">{{ prov.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <!-- select tujuan kota -->
+        <div class="form-city tujuan-city">
+          <label for="tujuan-city">Kota/Kabupaten: </label>
+          <select id="tujuan-city" name="tujuan-city">
+            <option value="">-- Pilih Kota --</option>
+          </select>
+        </div>
+      </div>
+      <!-- Berat -->
+      <div class="form-weight weight">
+        <label for="weight">Berat (kg): </label>
+        <input id="weight" type="number" name="weight" placeholder="-- Masukan Berat (kg) --" />
+      </div>
+      <!-- Volume -->
+      <div class="form-volume volume">
+        <label>Volume (cm)</label>
+        <div class="volume-inputs">
+          <input id="panjang" type="number" name="panjang" placeholder="Panjang (cm)" />
+          <input id="lebar" type="number" name="lebar" placeholder="Lebar (cm)" />
+          <input id="tinggi" type="number" name="tinggi" placeholder="Tinggi (cm)" />
+        </div>
+      </div>
+
+      <!-- Ekspedisi -->
+      <div class="form-courier">
+        <label>Pilih Ekspedisi</label>
+
+        <div class="courier-options">
+          <label class="courier-item">
+            <input type="checkbox" name="couriers" value="jne" checked />
+            <span>JNE</span>
+          </label>
+
+          <label class="courier-item">
+            <input type="checkbox" name="couriers" value="jnt" />
+            <span>J&T</span>
+          </label>
+
+          <label class="courier-item">
+            <input type="checkbox" name="couriers" value="tiki" />
+            <span>TIKI</span>
+          </label>
+
+          <label class="courier-item">
+            <input type="checkbox" name="couriers" value="pos" />
+            <span>POS</span>
+          </label>
+        </div>
+      </div>
+
+      <input id="submit" type="submit" value="Cek Ongkir" />
+    </div>
+  </form>
+</div>
+
+<!-- Data Ongkir -->
+<div class="data-ongkir">
+  <div class="data-wilayah">
+    {% if asal_city and tujuan_city %}
+    <h3>💰 Data Tarif Ongkir</h3>
+    <div class="arrow-led">
+      <span>{{ asal_city.name }}</span>
+
+      <div class="led-line">
+        <div class="weight-marquee">
+          <img src="{% static 'feeongkir/img/truck.svg' %}" />
+          <p>{{ weight }}</p>
+        </div>
+      </div>
+      <span>{{ tujuan_city.name }}</span>
+    </div>
+    {% endif %}
+  </div>
+  <div class="result-fee">
+    {% for data in cost_price %}
+    <table class="ongkir-table">
+      <thead>
+        <tr>
+          <th>Layanan</th>
+          <th>Deskripsi</th>
+          <th>Estimasi</th>
+          <th>Harga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ data.service }}</td>
+          <td>{{ data.description }}</td>
+          <td>{{ data.etd }}</td>
+          <td>Rp {{ data.cost }}</td>
+        </tr>
+      </tbody>
+    </table>
+    {% endfor %}
+  </div>
+</div>
+{% block javascript %}
+<script src="{% static 'feeongkir/js/javascript.js' %}"></script>
+{% endblock %} {% endblock %}

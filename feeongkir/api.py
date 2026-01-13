@@ -12,9 +12,6 @@ def get_prov():
     r = requests.get(url, headers=headers, timeout=30)
     return r.json()
 
-
-
-
 def get_cities(province_id):
     url = "https://rajaongkir.komerce.id/api/v1/destination/province"
     headers = {"Key": API_KEY}
@@ -25,6 +22,26 @@ def get_cities(province_id):
 
     return r.json()
 
+
+def get_cost(asal,tujuan,berat,kurir):
+    URL = "https://rajaongkir.komerce.id/api/v1/calculate/district/domestic-cost"
+    headers = {"Key": API_KEY}
+
+    payload = {
+        "origin": asal,        
+        "destination": tujuan,   
+        "weight": berat,        
+        "courier": kurir,
+        "price": "lowest"
+    }
+
+    headers = {
+        "key": API_KEY,
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+
+    res = requests.post(URL, data=payload, headers=headers, timeout=30)
+    return res.json()
 
 
     
