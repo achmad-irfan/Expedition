@@ -15,7 +15,7 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = "/home/wwwachm1/EXPEDITION/staticfiles"
+STATIC_ROOT = "/home/wwwachm1/public_html/expedition/static"
 MEDIA_ROOT = '/home/wwwachm1/EXPEDITION/mediafiles'
 
 LOGGING = {
