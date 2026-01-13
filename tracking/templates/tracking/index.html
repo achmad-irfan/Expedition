@@ -1,8 +1,187 @@
 {% extends 'base.html' %} {% load static %}
 <!-- Block CSS -->
 {% block app_css %}
-<link rel="stylesheet" href="{% static 'tracking/css/styles.css' %}" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  .tracking {
+    display: grid;
+    gap: 15px;
+    grid-template-areas:
+      "form form form"
+      "status map map";
+  }
+
+  .form-resi {
+    grid-area: form;
+  }
+
+  .status-resi,
+  .peta,
+  form {
+    border: 1px solid white;
+    padding: 20px;
+    background-color: #020617;
+    border-radius: 10px;
+    justify-items: center;
+  }
+
+  form {
+    display: grid;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  label {
+    text-align: center;
+    font-size: larger;
+  }
+  #resi {
+    width: 800px;
+    height: 75px;
+    border-radius: 10px;
+  }
+
+  #submit {
+    width: 100px;
+    background-color: blue;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    padding: 10px;
+    justify-self: center;
+  }
+
+  .status-resi {
+    grid-area: status;
+  }
+
+  .peta {
+    grid-area: map;
+  }
+
+  .courir-select {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+  .courier-item {
+    border: 1px solid #374151;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #111827;
+    color: white;
+    padding: 10px;
+  }
+
+  /* Table Tracking */
+  .tracking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #020617;
+    border-radius: 10px;
+    overflow: hidden;
+    color: #e5e7eb;
+    font-size: 14px;
+  }
+
+  /* Header & Cell */
+  .tracking-table th,
+  .tracking-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #1e293b;
+    text-align: left;
+  }
+
+  /* Kolom Judul (Pengirim, Penerima, Status) */
+  .tracking-table th:first-child {
+    width: 20%;
+    background-color: #020617;
+    color: #38bdf8;
+    font-weight: 600;
+  }
+
+  /* Kolom Data */
+  .tracking-table th:not(:first-child),
+  .tracking-table td {
+    font-weight: 500;
+    color: #f1f5f9;
+  }
+
+  /* Baris Status */
+  .tracking-table tr:last-child th {
+    background-color: #020617;
+    color: #22c55e;
+    font-weight: 600;
+  }
+
+  /* Hover Effect */
+  .tracking-table tr:hover {
+    background-color: #020617;
+  }
+
+  .timeline-title {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #38bdf8;
+  }
+
+  /* Container */
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid #1e293b;
+  }
+
+  /* Item */
+  .timeline-item {
+    position: relative;
+    margin-bottom: 12px;
+  }
+
+  /* Dot */
+  .timeline-dot {
+    position: absolute;
+    left: -9px;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    border: 3px solid #020617;
+  }
+
+  /* Content */
+  .timeline-content {
+    background-color: #020617;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #1e293b;
+  }
+
+  /* Date */
+  .timeline-date {
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  /* Status */
+  .timeline-status {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #f1f5f9;
+    font-weight: 500;
+  }
+
+  #shipment-map {
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 20px;
+    border: 1px solid #1e293b;
+  }
+</style>
 {% endblock %}
 <!-- Block Content -->
 {% block content %}
