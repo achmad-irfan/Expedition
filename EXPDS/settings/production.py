@@ -15,8 +15,8 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = "/home/wwwachm1/CVBUILDER/staticfiles"
-MEDIA_ROOT = '/home/wwwachm1/CVBUILDER/mediafiles'
+STATIC_ROOT = "/home/wwwachm1/EXPEDITION/staticfiles"
+MEDIA_ROOT = '/home/wwwachm1/EXPEDITION/mediafiles'
 
 LOGGING = {
     'version': 1,
